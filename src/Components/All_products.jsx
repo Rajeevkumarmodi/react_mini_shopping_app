@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import productData from "../ProductData/product";
 import Product_card from "./Product_card";
 
-function All_products({ category, setCategory }) {
+function All_products({ category, setCategory, cartData, setCartData }) {
   const [allProductData, setAllProductData] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,14 @@ function All_products({ category, setCategory }) {
   return (
     <div className="flex flex-wrap justify-center gap-11">
       {allProductData.map((data) => {
-        return <Product_card key={data.id} data={data} />;
+        return (
+          <Product_card
+            key={data.id}
+            data={data}
+            cartData={cartData}
+            setCartData={setCartData}
+          />
+        );
       })}
     </div>
   );

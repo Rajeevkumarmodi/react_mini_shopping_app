@@ -1,8 +1,21 @@
 import React from "react";
 import rating_logo from "../assets/rating_logo.png";
 
-function Product_card({ data }) {
+function Product_card({ data, cartData, setCartData }) {
   const { title, price, rating } = data;
+
+  // --------------------------------------------------------------------------------------
+  // -------------------------Isdert data in cart------------------------------------------
+  // --------------------------------------------------------------------------------------
+
+  function addToCart(data) {
+    const checkData = cartData && cartData.find((elm) => elm.id === data.id);
+    if (checkData) {
+      alert("Product is already present in cart");
+    } else {
+      setCartData([...cartData, data]);
+    }
+  }
   return (
     <div className=" w-[250px] h-[330px] shadow-lg shadow-blue-500/50 rounded-xl  hover:shadow-lg shadow-cyan-500/50 p-4 cursor-pointer">
       <div>
@@ -23,7 +36,10 @@ function Product_card({ data }) {
         <img className=" w-5 h-5" src={rating_logo} alt="" />
       </div>
       <div className=" py-2 text-center">
-        <button className=" w-[150px] py-1 px-3 bg-blue-600 rounded-lg text-white">
+        <button
+          onClick={() => addToCart(data)}
+          className=" w-[150px] py-1 px-3 bg-blue-600 rounded-lg text-white"
+        >
           Add to Cart
         </button>
       </div>
