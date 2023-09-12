@@ -4,8 +4,10 @@ import Mini_cart from "./Mini_cart";
 
 function Add_to_cart({ isClose, setIsClose, cartData, setCartData }) {
   const [totalAmount, setTotalAmount] = useState(0);
+  const [btnVal, setBtnVal] = useState(1);
+
   return (
-    <div className=" h-full w-[300px] bg-black fixed top-0 right-0  overflow-y-scroll ">
+    <div className=" h-full w-full md:w-[300px] bg-black fixed top-0 right-0  overflow-y-scroll ">
       <div className=" p-2 fixed top-0 bg-black w-[300px]">
         <img
           onClick={() => setIsClose(!isClose)}
@@ -22,7 +24,7 @@ function Add_to_cart({ isClose, setIsClose, cartData, setCartData }) {
           setTotalAmount={setTotalAmount}
         />
       </div>
-      <div className=" flex flex-col gap-3 bg-black fixed w-[300px] bottom-0 py-1">
+      <div className=" flex flex-col gap-3 bg-black fixed md:w-[300px] w-full bottom-0 py-1">
         <div className="flex gap-5 px-[20px] font-bold pt-3">
           <p className=" text-white font-bold">Total Price :</p>
           <p className=" text-white">$ {totalAmount}</p>

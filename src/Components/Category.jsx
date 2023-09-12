@@ -7,7 +7,7 @@ function Category({ category, setCategory }) {
   }
   return (
     <div className=" my-8">
-      <ul className="flex gap-8 justify-center">
+      <ul className="flex gap-8 justify-center flex-wrap">
         <li
           onClick={() => selectCategory("all")}
           className=" bg-orange-600 text-white py-1 px-3 rounded-lg cursor-pointer hover:bg-orange-700"

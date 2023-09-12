@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import rating_logo from "../assets/rating_logo.png";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Product_card({ data, cartData, setCartData }) {
   const { title, price, rating } = data;
@@ -8,16 +12,29 @@ function Product_card({ data, cartData, setCartData }) {
   // -------------------------Isdert data in cart------------------------------------------
   // --------------------------------------------------------------------------------------
 
-  function addToCart(data) {
+  function addToCart(data, e) {
     const checkData = cartData && cartData.find((elm) => elm.id === data.id);
     if (checkData) {
-      alert("Product is already present in cart");
+      e.stopPropagation();
+      toast.error("Product is already prasent in cart", {
+        position: "top-center",
+        autoClose: 2000,
+      });
     } else {
+      e.stoppropagation();
       setCartData([...cartData, data]);
+      toast.success("Product Added👍!", {
+        position: "top-center",
+        autoClose: 2000,
+      });
     }
   }
+
   return (
-    <div className=" w-[250px] h-[330px] shadow-lg shadow-blue-500/50 rounded-xl  hover:shadow-lg shadow-cyan-500/50 p-4 cursor-pointer">
+    <Link
+      to={`/product/${data.id}`}
+      className=" w-[250px] h-[330px] shadow-lg shadow-blue-500/50 rounded-xl  hover:shadow-lg shadow-cyan-500/50 p-4 cursor-pointer"
+    >
       <div>
         <img
           className=" w-[95vw] h-[200px] rounded-lg"
@@ -43,7 +60,8 @@ function Product_card({ data, cartData, setCartData }) {
           Add to Cart
         </button>
       </div>
-    </div>
+      <ToastContainer />
+    </Link>
   );
 }
 
