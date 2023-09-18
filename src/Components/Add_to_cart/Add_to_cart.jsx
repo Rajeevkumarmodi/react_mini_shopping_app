@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import close_icon from "../../assets/close_icon.png";
 import Mini_cart from "./Mini_cart";
+import { productContext } from "../../App";
 
-function Add_to_cart({ isClose, setIsClose, cartData, setCartData }) {
+function Add_to_cart() {
+  const contex = useContext(productContext);
+  const { isClose, setIsClose, cartData, setCartData } = contex;
   const [totalAmount, setTotalAmount] = useState(0);
   const [btnVal, setBtnVal] = useState(1);
 

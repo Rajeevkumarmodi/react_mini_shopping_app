@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import productData from "../ProductData/product";
 import Product_card from "./Product_card";
+import { productContext } from "../App";
 
-function All_products({ category, setCategory, cartData, setCartData }) {
+function All_products() {
   const [allProductData, setAllProductData] = useState([]);
-
+  const contex = useContext(productContext);
+  const { category, setCategory, cartData, setCartData } = contex;
   useEffect(() => {
     if (category == "all") {
       setAllProductData(productData);
@@ -21,14 +23,7 @@ function All_products({ category, setCategory, cartData, setCartData }) {
   return (
     <div className="flex flex-wrap justify-center gap-11">
       {allProductData.map((data) => {
-        return (
-          <Product_card
-            key={data.id}
-            data={data}
-            cartData={cartData}
-            setCartData={setCartData}
-          />
-        );
+        return <Product_card key={data.id} data={data} />;
       })}
     </div>
   );
