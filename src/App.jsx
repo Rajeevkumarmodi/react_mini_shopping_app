@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProductPage from "./pages/singleProductPage";
 import NavBar from "./Components/NavBar";
 import { createContext } from "react";
+import Buy_product from "./Components/Buy_product";
+import Footer from "./Components/Footer";
 
 const productContext = createContext("");
 
@@ -27,12 +29,14 @@ function App() {
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route path="/product/:id" element={<SingleProductPage />} />
+          <Route path="/product/buy" element={<Buy_product />} />
           <Route
             exact
             path="/*"
             element={<h1 className=" text-3xl">Invalid Page</h1>}
           />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </productContext.Provider>
   );

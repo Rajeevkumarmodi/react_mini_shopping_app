@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import close_icon from "../../assets/close_icon.png";
 import Mini_cart from "./Mini_cart";
 import { productContext } from "../../App";
+import { Link } from "react-router-dom";
 
 function Add_to_cart() {
   const contex = useContext(productContext);
@@ -32,9 +33,12 @@ function Add_to_cart() {
           <p className=" text-white font-bold">Total Price :</p>
           <p className=" text-white">$ {totalAmount}</p>
         </div>
-        <button className=" bg-green-600 text-white py-1 font-bold">
+        <Link
+          to="/product/buy"
+          className=" bg-green-600 text-white py-1 font-bold text-center"
+        >
           Buy Now
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductsData from "../ProductData/product";
 import Add_to_cart from "../Components/Add_to_cart/Add_to_cart";
 import { productContext } from "../App";
@@ -79,9 +79,12 @@ function singleProductPage() {
           >
             Add to cart
           </button>
-          <button className=" bg-blue-600 py-2 px-3 rounded-lg text-white">
+          <Link
+            to="/product/buy"
+            className=" bg-blue-600 py-2 px-3 rounded-lg text-white"
+          >
             Buy Now
-          </button>
+          </Link>
         </div>
       </div>
       {isClose ? <Add_to_cart /> : ""}
